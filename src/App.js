@@ -1,10 +1,10 @@
 // import logo from './logo.svg';
 import './App.css';
 import AppRouter from './config/router';
-import Firebase from "./config/firebase";
+// import Firebase from "./config/firebase";
 import * as React from 'react';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+// import Stack from '@mui/material/Stack';
+// import Button from '@mui/material/Button';
 
     
 function App() {
@@ -12,7 +12,9 @@ function App() {
     <div className="App">
       
       <AppRouter />
-      <Stack direction="row" spacing={2}>
+
+
+      {/* <Stack direction="row" spacing={2}>
       <Button color="secondary">Secondary</Button>
       <Button variant="outlined" color="success">
         Success
@@ -20,7 +22,7 @@ function App() {
       <Button variant="contained" color="error">
         Error
       </Button>
-    </Stack>
+    </Stack> */}
 
     </div>
   );
