@@ -6,6 +6,7 @@ import { auth } from "../config/firebase";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { db, ref, onValue } from "../config/firebase";
+import Navbar from "../components/Navbar";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -47,6 +48,8 @@ export default function Login() {
   };
   // d-flex justify-content-center align-items-center
   return (
+    <>
+    <Navbar/>
     <div
       className="d-flex justify-content-center align-items-center"
       style={{
@@ -68,19 +71,19 @@ export default function Login() {
           <br />
           <form onSubmit={(e) => Login(e)}>
             <input
-              className="p-1 m-1"
+              className="p-2 m-1"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              placeholder="Enter Email Address"
+              placeholder="Enter Email Address" required
             />
             <br />
             <input
-              className="p-1 m-1"
+              className="p-2 m-1"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              placeholder="Enter Password"
+              placeholder="Enter Password" required
             />
             <br />
             <br />
@@ -88,9 +91,11 @@ export default function Login() {
           </form>
           <hr />
           <h4>Don't Register?</h4>
+          
           <Link to="/signup">Sign Up</Link> Here
         </div>
       )}
     </div>
+    </>
   );
 }

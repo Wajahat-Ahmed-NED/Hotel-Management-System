@@ -4,7 +4,7 @@ export default function Button(props) {
     let {value,onClick}=props;
     return (
         <>
-          <button onClick={onClick} className="btn btn-outline-primary">{value}</button>  
+          <button onSubmit={props.onSubmit} onClick={onClick} className="btn btn-outline-primary">{value}</button>  
         </>
     )
 }

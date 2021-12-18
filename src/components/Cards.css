@@ -1,0 +1,12 @@
+.card:hover{
+    cursor: pointer;
+    background-color: rgb(255, 0, 0);
+    color:rgb(168, 53, 0);
+    /* border: 1px solid black; */
+    /* border-radius: 50%; */
+    font-size: 20px;
+    
+}
+.card-body:hover{
+    background-color:rgb(255, 216, 250);
+}

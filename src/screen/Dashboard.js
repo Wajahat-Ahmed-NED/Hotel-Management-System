@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from "@mui/material/IconButton";
+import EditIcon from '@mui/icons-material/Edit';
 // import DeleteIcon from "@mui/icons-material/Delete";
 import {
 
@@ -19,6 +20,7 @@ import {
   remove,
 } from "../config/firebase";
 import MenuAppBar from '../components/Header';
+import Navbar from '../components/Navbar';
 
 export default function Dashboard() {
   const [loader, setLoader] = useState(false)
@@ -39,6 +41,25 @@ export default function Dashboard() {
         console.log(err);
       });
   };
+
+
+
+  const deleteUser = (id) => {
+    const refrence = ref(db, "users/" + id);
+    remove(refrence);
+    window.location.reload();
+    
+  };
+
+
+
+  const editUser = (id) => {
+    alert("Edit Mode")
+  };
+
+
+
+
   const getData = () => {
     let refrence = ref(db, "users/");
     let arr = [];
@@ -49,11 +70,9 @@ export default function Dashboard() {
       }
     });
   };
-  const deleteUser = (id) => {
-    const refrence = ref(db, "users/" + id);
-    remove(refrence);
 
-  };
+
+
   useEffect(() => {
     setLoader(true)
     onAuthStateChanged(auth, (user) => {
@@ -63,6 +82,7 @@ export default function Dashboard() {
         // setuserLogin(true);
         setLoader(false)
         setuserData(location.state)
+        console.log(userData)
         getData()
       }
       else {
@@ -78,13 +98,13 @@ export default function Dashboard() {
       {loader ? (
         <h1>Loading...</h1>
       ) : (<>
-        {/* <Navbar /> */}
-        <MenuAppBar name={userData.name} />
+        <Navbar />
+        {/* <MenuAppBar name={userData.name} /> */}
 
         <div>
-          <h1>This is Dashboard</h1>
-          <div className="container" style={{ textAlign: "center", border: '2px solid black', padding: '10px' }}>
-            <table>
+          <h1 className='my-3'>Admin Dashboard</h1>
+          <div className="container" style={{ textAlign: "center",padding: '10px' }}>
+            <table className="table table-striped table-hover">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -105,6 +125,13 @@ export default function Dashboard() {
                           color="secondary"
                         >
                           <DeleteIcon />
+                        </IconButton>
+                        <IconButton
+                          onClick={() => editUser(e.uid)}
+                          aria-label="edit"
+                          color="success"
+                        >
+                          <EditIcon />
                         </IconButton>
                       </td>
                     </tr>
@@ -132,7 +159,7 @@ export default function Dashboard() {
                 </div>
             </div> */}
             <br/>
-      <Button onClick={logout} value="SignOut" />
+      {/* <Button onClick={logout} value="SignOut" /> */}
 
     </>
   )
