@@ -9,7 +9,7 @@ import {
 export default function Footer() {
     return (
         <>
-         <div className="container-fluid py-2" style={{backgroundColor:'black',color:'white'}}>
+         <div className="container-fluid py-2 mt-3" style={{backgroundColor:'black',color:'white'}}>
              <span >@Copyright-2021 | All Rights Reserved</span>
              <Link to='/dashboard'>
              <span style={{marginLeft:'130px'}}>Admin Panel</span>
